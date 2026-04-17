@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Meridian ERP — Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "wobble": 1.1,
+  "density": 1,
+  "annotations": 1,
+  "accent": "status",
+  "defaultScreen": "dashboard"
+}/*EDITMODE-END*/;
+</script>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      Meridian<span class="muted" style="font-weight:400;font-size:14px">&nbsp;ERP</span>
+    </div>
+    <ul class="megamenu" id="megamenu">
+      <li><a data-screen="dashboard">Home</a></li>
+      <li>
+        <a>CRM <span class="caret">▾</span></a>
+        <div class="megamenu-panel">
+          <h4>Customers &amp; Sales Relations</h4>
+          <div><div class="group-label">Records</div><a data-screen="crm">Customers</a><a>Contacts</a><a>Leads</a><a>Opportunities</a></div>
+          <div><div class="group-label">Activities</div><a>Tasks &amp; Calls</a><a>Campaigns</a><a>Support Cases</a></div>
+        </div>
+      </li>
+      <li>
+        <a>Sales <span class="caret">▾</span></a>
+        <div class="megamenu-panel">
+          <h4>Order-to-Cash</h4>
+          <div><div class="group-label">Transactions</div><a data-screen="orders">Sales Orders</a><a>Quotes</a><a>Invoices</a><a>Credit Memos</a></div>
+          <div><div class="group-label">Ops</div><a>Fulfillment Queue</a><a>Shipments</a><a>Returns (RMAs)</a></div>
+        </div>
+      </li>
+      <li>
+        <a>Procurement <span class="caret">▾</span></a>
+        <div class="megamenu-panel">
+          <h4>Procure-to-Pay</h4>
+          <div><div class="group-label">Transactions</div><a data-screen="procurement">Purchase Orders</a><a>Requisitions</a><a>Vendor Bills</a><a>Payments</a></div>
+          <div><div class="group-label">Master Data</div><a>Vendors</a><a>Price Lists</a><a>Approval Rules</a></div>
+        </div>
+      </li>
+      <li>
+        <a>Inventory <span class="caret">▾</span></a>
+        <div class="megamenu-panel">
+          <h4>Inventory &amp; Warehouse</h4>
+          <div><div class="group-label">Stock</div><a data-screen="inventory">Item Records</a><a>Stock Levels</a><a>Locations / Bins</a><a>Lots &amp; Serials</a></div>
+          <div><div class="group-label">Movements</div><a>Transfers</a><a>Adjustments</a><a>Cycle Counts</a></div>
+        </div>
+      </li>
+      <li>
+        <a>Manufacturing <span class="caret">▾</span></a>
+        <div class="megamenu-panel">
+          <h4>Production</h4>
+          <div><div class="group-label">Plan</div><a data-screen="manufacturing">Work Orders</a><a>MRP Run</a><a>Capacity Plan</a></div>
+          <div><div class="group-label">Build</div><a>Routings</a><a>BOMs</a><a>Shop Floor</a></div>
+        </div>
+      </li>
+      <li>
+        <a>Reports <span class="caret">▾</span></a>
+        <div class="megamenu-panel">
+          <h4>Reports &amp; Analytics</h4>
+          <div><div class="group-label">Operational</div><a data-screen="reports">Ops Dashboard</a><a>Fulfillment SLA</a><a>Inventory Turns</a><a>On-Time Delivery</a></div>
+          <div><div class="group-label">Financial</div><a>P&amp;L</a><a>AR Aging</a><a>AP Aging</a><a>Saved Searches</a></div>
+        </div>
+      </li>
+      <li><a data-screen="admin">Admin</a></li>
+    </ul>
+    <div class="topbar-right">
+      <div class="search"><span>⌕</span><span>Search records…</span><span class="kbd">⌘K</span></div>
+      <span class="mono tiny muted">Subsidiary: US-Ops</span>
+      <span class="avatar">OM</span>
+    </div>
+  </header>
+
+  <div class="subnav" id="subnav"></div>
+
+  <main class="main" id="main"></main>
+</div>
+
+<nav class="screen-bar" id="screenbar">
+  <button data-screen="dashboard">01 · Dashboard</button>
+  <button data-screen="orders">02 · Sales Orders</button>
+  <button data-screen="order-detail">03 · Order Detail</button>
+  <button data-screen="inventory">04 · Inventory</button>
+  <button data-screen="item-detail">05 · Item Detail</button>
+  <button data-screen="procurement">06 · Procurement</button>
+  <button data-screen="manufacturing">07 · Work Orders</button>
+  <button data-screen="crm">08 · Customer</button>
+  <button data-screen="reports">09 · Reports</button>
+  <button data-screen="admin">10 · Admin</button>
+  <div class="divider"></div>
+  <button id="tweaksBtn">✎ Tweaks</button>
+</nav>
+
+<aside class="tweaks" id="tweaks">
+  <h3>Tweaks</h3>
+  <div class="tweak-row">
+    <label>Sketch wobble</label>
+    <input type="range" id="tw-wobble" min="0" max="3" step="0.1" value="1">
+  </div>
+  <div class="tweak-row">
+    <label>Density</label>
+    <div class="seg" id="tw-density">
+      <button data-v="0.85">Airy</button>
+      <button data-v="1" class="active">Default</button>
+      <button data-v="1.2">Dense</button>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <label>Annotations</label>
+    <div class="seg" id="tw-anno">
+      <button data-v="1" class="active">Show</button>
+      <button data-v="0">Hide</button>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <label>Accent colors</label>
+    <div class="seg" id="tw-accent">
+      <button data-v="bw">B&amp;W</button>
+      <button data-v="status" class="active">Status</button>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <label>&nbsp;</label>
+    <div class="tiny muted" style="line-height:1.4">Press <span class="kbd">⌘K</span> to jump · Click any row to drill in · All actions update store and persist to localStorage.</div>
+  </div>
+</aside>
+
+<script src="store.js"></script>
+<script src="screens1.js"></script>
+<script src="screens_extra.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
